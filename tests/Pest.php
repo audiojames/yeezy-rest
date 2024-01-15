@@ -13,8 +13,8 @@
 
 uses(
     Tests\TestCase::class,
-    // Illuminate\Foundation\Testing\RefreshDatabase::class,
-)->in('Feature');
+    Illuminate\Foundation\Testing\RefreshDatabase::class,
+)->in('Feature', 'Unit');
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
+function setupToken()
 {
-    // ..
+    \App\Models\ApiToken::create(['token' => 'my-token']);
 }

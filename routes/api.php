@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(\App\Http\Middleware\TokenAuth::class)->group(function () {
+    Route::get('quotes', \App\Http\Controllers\QuoteController::class);
+    Route::get('fresh-quotes', \App\Http\Controllers\FreshQuoteContoller::class);
 });
